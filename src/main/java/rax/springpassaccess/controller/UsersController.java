@@ -21,6 +21,23 @@ public class UsersController {
         this.usersService = usersService;
     }
 
+
+    @GetMapping("/mainpage")
+    public String getMainPage() {
+        return "mainPage";
+    }
+
+    @PostMapping("/mainpage/signin")
+    public String signInPage() {
+        return "redirect:/signIn";
+    }
+
+    @PostMapping("/mainpage/signup")
+    public String signUpPage() {
+        return "redirect:/signUp";
+    }
+
+
     @GetMapping("/users")
     public String getUsersPage(Model model) {
         List<User> users = usersService.getAllUsers();

@@ -12,6 +12,7 @@
     <label>Email:
         <input type="email" name="email" placeholder="Введите email">
     </label>
+    <br/>
     <label>Пароль:
         <input type="password" name="password" placeholder="Введите пароль">
     </label>
