@@ -1,13 +1,13 @@
-package rax.springpassaccess;
+package rax.springpassaccess.uart;
 
 import com.rm5248.serial.NoSuchPortException;
 import com.rm5248.serial.NotASerialPortException;
 import com.rm5248.serial.SerialPort;
 import com.rm5248.serial.SerialPortBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import rax.springpassaccess.services.UsersService;
-import rax.springpassaccess.services.UsersServiceImpl;
+import rax.springpassaccess.models.UidList;
+import rax.springpassaccess.repositories.UserRepository;
 
 import javax.sql.DataSource;
 import java.io.BufferedReader;
@@ -16,6 +16,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class UartInterface {
 
@@ -27,13 +28,12 @@ public class UartInterface {
     }
 
     public void uartread() {
-        /*DataSource dataSource = new DriverManagerDataSource("jdbc:postgresql://localhost:5432/pcs_2",
+        DataSource dataSource = new DriverManagerDataSource("jdbc:postgresql://localhost:5432/pcs_2",
                 "postgres", "1234");
 
         UsersRepository usersRepository = new UsersRepositoryJdbcTemplateImpl(dataSource);
-        System.out.println(usersRepository.findAll());*/
 
-
+        List<UidList> list;
 
         try {
             SerialPortBuilder builder = new SerialPortBuilder();
@@ -41,10 +41,21 @@ public class UartInterface {
             SerialPort port = builder.build();
             OutputStream os = port.getOutputStream();
             while (true) {
+                list = usersRepository.findAll();
+
                 BufferedReader reader = new BufferedReader(new InputStreamReader(port.getInputStream()));
                 String [] word = reader.readLine().split("\\.");
                 if (word.length > 3 ) {
-                    if (word[2].equals("13ED834A") || word[2].equals("42C178A535A80")) {
+                    int chek = 0;
+
+                    for (int i = 0; i < list.size(); i++) {
+                        if (word[2].equals(list.get(i).getUid())) {
+                            chek = 1;
+                            usersRepository.save(!list.get(i).getStatus(), LocalDateTime.now().toString(), list.get(i).getId());
+                        }
+                    }
+
+                    if (chek == 1) {
                         System.out.println(LocalDateTime.now() + "  " + ANSI_BLUE + "RFID " + ANSI_GREEN + "ALLOW" + ANSI_RESET + " UID = " + word[2]);
                         os.write('1');
                     } else {

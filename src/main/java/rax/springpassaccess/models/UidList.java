@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -21,4 +22,6 @@ public class UidList {
     private String firstName;
     private String lastName;
     private String uid;
+    private Boolean status;
+    private String datatime;
 }
