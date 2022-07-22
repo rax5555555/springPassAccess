@@ -3,22 +3,17 @@ package rax.springpassaccess.uart;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import rax.springpassaccess.models.UidList;
+import rax.springpassaccess.repositories.UidRepository;
 
 import javax.sql.DataSource;
-import java.time.LocalDateTime;
 import java.util.List;
 
-public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
+public class UsersRepositoryJdbcTemplateImpl implements UidRepository {
 
     //language=SQL
     private static final String SQL_INSERT = "update uidlist set status=?, datatime=? where id=?";
-
     //language=SQL
-    private static final String SQL_SELECT_ALL = "select uid from uidlist";
-
-    private static final String SQL_SELECT_ALL2 = "select * from uidlist";
-
-    private static final String SQL_SELECT_UID = "select * from uidlist order by id";
+    private static final String SQL_SELECT_ALL = "select * from uidlist";
 
     private JdbcTemplate jdbcTemplate;
 
@@ -39,7 +34,7 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
 
     @Override
     public List<UidList> findAll() {
-        return jdbcTemplate.query(SQL_SELECT_ALL2, userRowMapper);
+        return jdbcTemplate.query(SQL_SELECT_ALL, userRowMapper);
     }
 
     @Override

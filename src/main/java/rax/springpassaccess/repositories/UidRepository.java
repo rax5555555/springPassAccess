@@ -1,12 +1,10 @@
-package rax.springpassaccess.uart;
+package rax.springpassaccess.repositories;
 
 import rax.springpassaccess.models.UidList;
-import rax.springpassaccess.models.User;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
-public interface UsersRepository {
+public interface UidRepository {
 
     List<UidList> findAll();
 

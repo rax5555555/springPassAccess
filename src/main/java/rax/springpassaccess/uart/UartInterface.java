@@ -1,19 +1,12 @@
 package rax.springpassaccess.uart;
 
-import com.rm5248.serial.NoSuchPortException;
-import com.rm5248.serial.NotASerialPortException;
-import com.rm5248.serial.SerialPort;
-import com.rm5248.serial.SerialPortBuilder;
-import lombok.RequiredArgsConstructor;
+import com.rm5248.serial.*;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import rax.springpassaccess.models.UidList;
-import rax.springpassaccess.repositories.UserRepository;
+import rax.springpassaccess.repositories.UidRepository;
 
 import javax.sql.DataSource;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -31,7 +24,7 @@ public class UartInterface {
         DataSource dataSource = new DriverManagerDataSource("jdbc:postgresql://localhost:5432/pcs_2",
                 "postgres", "1234");
 
-        UsersRepository usersRepository = new UsersRepositoryJdbcTemplateImpl(dataSource);
+        UidRepository usersRepository = new UsersRepositoryJdbcTemplateImpl(dataSource);
 
         List<UidList> list;
 
