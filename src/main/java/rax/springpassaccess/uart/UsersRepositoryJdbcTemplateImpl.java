@@ -3,12 +3,11 @@ package rax.springpassaccess.uart;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import rax.springpassaccess.models.UidList;
-import rax.springpassaccess.repositories.UidRepository;
 
 import javax.sql.DataSource;
 import java.util.List;
 
-public class UsersRepositoryJdbcTemplateImpl implements UidRepository {
+public class UsersRepositoryJdbcTemplateImpl implements UidRepositoryUart {
 
     //language=SQL
     private static final String SQL_INSERT = "update uidlist set status=?, datatime=? where id=?";

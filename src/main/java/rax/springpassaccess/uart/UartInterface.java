@@ -3,7 +3,6 @@ package rax.springpassaccess.uart;
 import com.rm5248.serial.*;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import rax.springpassaccess.models.UidList;
-import rax.springpassaccess.repositories.UidRepository;
 
 import javax.sql.DataSource;
 import java.io.*;
@@ -24,7 +23,7 @@ public class UartInterface {
         DataSource dataSource = new DriverManagerDataSource("jdbc:postgresql://localhost:5432/pcs_2",
                 "postgres", "1234");
 
-        UidRepository usersRepository = new UsersRepositoryJdbcTemplateImpl(dataSource);
+        UidRepositoryUart usersRepository = new UsersRepositoryJdbcTemplateImpl(dataSource);
 
         List<UidList> list;
 

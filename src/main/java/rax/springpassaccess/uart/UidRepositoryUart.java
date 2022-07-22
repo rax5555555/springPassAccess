@@ -1,10 +1,10 @@
-package rax.springpassaccess.repositories;
+package rax.springpassaccess.uart;
 
 import rax.springpassaccess.models.UidList;
 
 import java.util.List;
 
-public interface UidRepository {
+public interface UidRepositoryUart {
 
     List<UidList> findAll();
 
