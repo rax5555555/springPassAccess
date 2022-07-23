@@ -43,7 +43,9 @@ public class UartInterface {
                     for (int i = 0; i < list.size(); i++) {
                         if (word[2].equals(list.get(i).getUid())) {
                             chek = 1;
-                            usersRepository.save(!list.get(i).getStatus(), LocalDateTime.now().toString(), list.get(i).getId());
+                            String[] time = LocalDateTime.now().toString().split("T");
+                            String[] time2 = time[1].split("\\.");
+                            usersRepository.save(!list.get(i).getStatus(), time[0] + " " + time2[0], list.get(i).getId());
                         }
                     }
 
@@ -59,9 +61,9 @@ public class UartInterface {
             }
 
         } catch (NoSuchPortException ex) {
-            System.err.println( "Oh no!  That port doesn't exist!" );
+            System.err.println( "That port doesn't exist!" );
         } catch (NotASerialPortException ex) {
-            System.err.println( "Oh no!  That's not a serial port!" );
+            System.err.println( "That's not a serial port!" );
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

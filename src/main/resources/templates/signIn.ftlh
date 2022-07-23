@@ -9,14 +9,19 @@
 </head>
 <body>
 <form method="post" action="/signIn">
-    <label>Email:
-        <input type="email" name="email" placeholder="Введите email">
-    </label>
     <br/>
-    <label>Пароль:
-        <input type="password" name="password" placeholder="Введите пароль">
-    </label>
-    <input type="submit" value="Войти">
+    <center>
+        <label>Email:
+            <input type="email" name="email" placeholder="Введите email">
+        </label>
+    </center>
+    <br/>
+    <center>
+        <label>Пароль:
+            <input type="password" name="password" placeholder="Введите пароль">
+        </label>
+        <input type="submit" value="Войти">
+    </center>
 </form>
 </body>
 </html>

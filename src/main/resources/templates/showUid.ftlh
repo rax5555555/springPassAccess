@@ -28,21 +28,13 @@
     </style>
 </head>
 <body>
-<form method="post" action="/all/search">
-    <label>
-        Название блюда : <input type="text" name="dishName" >
-    </label>
-    <button type="submit">Найти</button>
-    <br> <br>
-</form>
-</body>
-<body>
+<h2>Таблица работников</h2>
 <table>
     <tr>
         <th>Имя</th>
         <th>Фамилия</th>
         <th>статус входа</th>
-        <th>дата входа</th>
+        <th>дата входа/выхода</th>
     </tr>
     <#list uid as allUid>
         <tr>

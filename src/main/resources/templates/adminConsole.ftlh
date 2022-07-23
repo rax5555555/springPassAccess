@@ -28,15 +28,21 @@
     </style>
 </head>
 <body>
-<form method="post" action="/all/search">
-    <label>
-        Название блюда : <input type="text" name="dishName" >
+<h1>Добавление работника</h1>
+<form method="post" action="/all/admin">
+    <label>Имя:
+        <input name="firstName" placeholder="Имя">
     </label>
-    <button type="submit">Найти</button>
-    <br> <br>
+    <label>Фамилия:
+        <input name="lastname" placeholder="Фамилия">
+    </label>
+    <label>UID:
+        <input name="uid" placeholder="UID">
+    </label>
+    <input type="submit" value="Добавить">
 </form>
-</body>
-<body>
+<br/>
+<h2>Таблица работников</h2>
 <table>
     <tr>
         <th>ID</th>
@@ -44,7 +50,8 @@
         <th>Фамилия</th>
         <th>uid</th>
         <th>статус входа</th>
-        <th>дата входа</th>
+        <th>дата входа/выхода</th>
+        <th>действия</th>
     </tr>
     <#list uid as allUid>
         <tr>
@@ -54,6 +61,12 @@
             <td>${allUid.uid}</td>
             <td>${allUid.status?c}</td>
             <td>${allUid.datatime}</td>
+            <td>
+                <form method="post" action="/all/admin/${allUid.id}/delete">
+                    <input type="submit" value="Удалить">
+                </form>
+                <a href="/all/admin/${allUid.id}">Перейти</a>
+            </td>
         </tr>
     </#list>
 </table>

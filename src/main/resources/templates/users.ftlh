@@ -56,6 +56,8 @@
     </label>
     <input type="submit" value="Добавить">
 </form>
+<br/>
+<h2>Таблица пользователей</h2>
 <table>
     <tr>
         <th>ID</th>
