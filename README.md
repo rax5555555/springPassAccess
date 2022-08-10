@@ -1,5 +1,7 @@
 ### Приложение для контроля режима пропуска с использованием считывателя карт
 
+![alt text](https://github.com/rax5555555/springPassAccess/blob/main/src/main/resources/photo/photo_2022-08-10_23-22-08.jpg)
+
 Используемые технологии
 
 * Java 8
