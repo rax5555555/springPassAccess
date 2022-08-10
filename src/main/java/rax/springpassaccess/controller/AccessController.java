@@ -48,4 +48,10 @@ public class AccessController {
         usersRepository.deleteUser(uidlistId);
         return "redirect:/all/admin";
     }
+
+    @PostMapping("/all/admin/{allUid-id}")
+    public String redactorUid(@PathVariable("allUid-id") Long uidlistId) {
+        usersRepository.deleteUser(uidlistId);
+        return "redirect:/all/admin";
+    }
 }
