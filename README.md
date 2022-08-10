@@ -2,14 +2,14 @@
 
 Используемые технологии
 
-Java 8
-Spring Boot, Spring MVC, Spring Data JPA, Spring Security
-Hibernate
-Freemarker
-PostgreSQL
-Maven
-Tomcat
-Arduino
+*Java 8
+*Spring Boot, Spring MVC, Spring Data JPA, Spring Security
+*Hibernate
+*Freemarker
+*PostgreSQL
+*Maven
+*Tomcat
+*Arduino
 
 Шаги реализации
 
